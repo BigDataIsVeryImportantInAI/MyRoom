@@ -4,6 +4,7 @@ from ClickableImage import ClickableImage
 from pico2d import *
 import game_framework
 import title_state
+import battlemap
 
 name = "WorldMapState"
 
@@ -74,36 +75,6 @@ class Hero:
         self.image.clip_draw(self.frame * 64, 80, 64, 80, self.x, self.y)
 
 
-def handle_events():
-    global running
-    global battle0, battle1, battle2, battle3
-    events = get_events()
-    for event in events:
-        battle0.handle(event)
-        battle1.handle(event)
-        battle2.handle(event)
-        battle3.handle(event)
-        if event.type == SDL_QUIT:
-            game_framework.quit()
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-            game_framework.change_state(title_state)
-        elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-            game_framework.change_state(worldmap)
-        # elif event.type == SDL_KEYDOWN and event.key == SDLK_SPACE:
-        #     if Boy.state == Boy.LEFT_RUN or Boy.state == Boy.RIGHT_RUN:
-        #         print("Boy.state == 0 or 1")
-        #         Boy.handle_dash_run(boy)
-        #     elif Boy.state == Boy.LEFT_STAND or Boy.state == Boy.RIGHT_STAND:
-                # print("Boy.state == 2 or 3")
-                # Boy.handle_again_run(boy)
-        # elif event.type == SDL_KEYDOWN and event.key == SDLK_h:
-        #     print("h")
-        #     if Boy.pos == 0:
-        #         Boy.pos = 1
-        #         Boy.pouse(boy)
-        #     else:
-        #         Boy.pos = 0
-
 def enter():
     global font
     font = load_font('font\\HANYGO230.ttf', 14)
@@ -118,7 +89,8 @@ def enter():
 
 def exit():
     global map, battle0, battle1, battle2, battle3, hero
-    del(map, battle1, battle2, battle3)
+    # battle클래스의 핸들이벤트가 del후에도 콜되서 멈춤
+    # del(map, battle0, battle1, battle2, battle3)
     del(hero)
 
 def pause():
@@ -142,5 +114,33 @@ def draw():
     delay(0.02)
 
 
-
+def handle_events():
+    global running
+    global battle0, battle1, battle2, battle3
+    events = get_events()
+    for event in events:
+        if event.type == SDL_QUIT:
+            game_framework.quit()
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+            game_framework.change_state(title_state)
+        elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
+            game_framework.change_state(battlemap)
+        battle0.handle(event)
+        battle1.handle(event)
+        battle2.handle(event)
+        battle3.handle(event)
+        # elif event.type == SDL_KEYDOWN and event.key == SDLK_SPACE:
+        #     if Boy.state == Boy.LEFT_RUN or Boy.state == Boy.RIGHT_RUN:
+        #         print("Boy.state == 0 or 1")
+        #         Boy.handle_dash_run(boy)
+        #     elif Boy.state == Boy.LEFT_STAND or Boy.state == Boy.RIGHT_STAND:
+                # print("Boy.state == 2 or 3")
+                # Boy.handle_again_run(boy)
+        # elif event.type == SDL_KEYDOWN and event.key == SDLK_h:
+        #     print("h")
+        #     if Boy.pos == 0:
+        #         Boy.pos = 1
+        #         Boy.pouse(boy)
+        #     else:
+        #         Boy.pos = 0
 
