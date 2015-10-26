@@ -1,23 +1,42 @@
+from pico2d import load_image
 import game_framework
 import title_state
+from ClickableImage import ClickableImage
 from pico2d import *
 
 
 name = "StartState"
-image = None
 logo_time = 0.0
+logo_Image = None
+
+class LogoImage(ClickableImage):
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.image = load_image('page\\logopage.png')
+        self.x_start = self.x - self.image.w/2
+        self.y_start = 600 - self.y - self.image.h/2
+        self.x_end = self.x + self.image.w/2
+        self.y_end = 600 - self.y + self.image.h/2
+
+    def draw(self):
+        self.image.draw(self.x, self.y)
+
+    def click_left(self):
+        global logo_time
+        logo_time = 5.0
 
 
 def enter():
-    global image
     open_canvas()
     hide_lattice()
-    image = load_image('page\\logopage.png')
+    global logo_Image
+    logo_Image = LogoImage(400,300)
 
 
 def exit():
-    global image
-    del(image)
+    global logo_Image
+    del(logo_Image)
     close_canvas()
 
 def update():
@@ -31,17 +50,19 @@ def update():
     logo_time += 0.01
 
 def draw():
-    global image
+    global logo_Image
     clear_canvas()
-    image.draw(400,300)
+    logo_Image.draw()
     update_canvas()
 
 
 
 
 def handle_events():
+    global logo_Image
     events = get_events()
-    pass
+    for event in events:
+        logo_Image.handle(event)
 
 
 def pause(): pass
