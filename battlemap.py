@@ -4,16 +4,9 @@ from ClickableImage import ClickableImage
 from pico2d import *
 import game_framework
 import worldmap
-import sys
-import types
-import ctypes
 import math
-import json
 
 from sdl2 import *
-from sdl2.sdlimage import *
-from sdl2.sdlttf import *
-from sdl2.sdlmixer import *
 
 class Tile:
     TILE_SIZE = 40
