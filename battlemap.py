@@ -15,6 +15,20 @@ from sdl2.sdlimage import *
 from sdl2.sdlttf import *
 from sdl2.sdlmixer import *
 
+class Tile:
+    TILE_SIZE = 40
+
+    def __init__(self, x, y):
+        self.tileCenter_x = x
+        self.tileCenter_y = y
+        self.vertexs = []   #헥사 타일의 모서리 xy좌표 6개
+        #헥사 타일의 모서리 위에서부터 시계방향으로
+        for i in range(0, 6):
+            self.point = hex_corner(self.tileCenter_x, self.tileCenter_y, Tile.TILE_SIZE, i)
+            self.vertexs.append(self.point)
+
+    def draw(self):
+        draw_hexagon(self.vertexs)
 
 def hex_corner(x, y, size, i):
     angle_deg = 60 * i   + 30
@@ -29,7 +43,11 @@ def handle_events():
             game_framework.quit()
 
 def enter():
-    pass
+    global  tile, tile1, tile2
+    height = Tile.TILE_SIZE * 2
+    tile = Tile(100, 100)
+    tile1 = Tile(100 + math.sqrt(3)/2 * height  , 100)
+    tile2 = Tile(100 + math.sqrt(3)/4 * height, 100 + height * 3/4)
 
 def exit():
     pass
@@ -44,30 +62,12 @@ def update():
     pass
 
 def draw():
+
     clear_canvas()
-    a = draw_rectangle(100, 100, 200, 200)
-    renderer = get_current_renderer()
-    xypoint = list()
-    for i in range(0, 5):
-        xypoint.append(hex_corner(400,300,50,i))
-    # for i in range(0,5):
-    #     xypoint = hex_corner(400,300,50,i)
-    #     SDL_RenderDrawPoints(renderer, xypoint, 100)
-    #     print("%d, %d", xypoint.x, xypoint.y)
-    # SDL_RenderDrawLines(renderer, xypoint[0], 2)
-    for i in range(0, 5):
-        xypoint1 = hex_corner(400,300,50,1)
-        xypoint2 = hex_corner(400,300,50,2)
-        xypoint3 = hex_corner(400,300,50,3)
-        xypoint4 = hex_corner(400,300,50,4)
-        xypoint5 = hex_corner(400,300,50,5)
-        xypoint6 = hex_corner(400,300,50,6)
-    SDL_RenderDrawLine(renderer, xypoint1.x, xypoint1.y, xypoint2.x, xypoint2.y)
-    SDL_RenderDrawLine(renderer, xypoint2.x, xypoint2.y, xypoint3.x, xypoint3.y)
-    SDL_RenderDrawLine(renderer, xypoint3.x, xypoint3.y, xypoint4.x, xypoint4.y)
-    SDL_RenderDrawLine(renderer, xypoint4.x, xypoint4.y, xypoint5.x, xypoint5.y)
-    SDL_RenderDrawLine(renderer, xypoint5.x, xypoint5.y, xypoint6.x, xypoint6.y)
-    SDL_RenderDrawLine(renderer, xypoint6.x, xypoint6.y, xypoint1.x, xypoint1.y)
+    tile.draw()
+    tile1.draw()
+    tile2.draw()
+
     update_canvas()
 
 
