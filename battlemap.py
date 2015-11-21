@@ -8,6 +8,9 @@ import math
 
 from sdl2 import *
 
+tile = []
+tilecol = []
+
 class Tile:
     TILE_SIZE = 40
 
@@ -36,11 +39,13 @@ def handle_events():
             game_framework.quit()
 
 def enter():
-    global  tile, tile1, tile2
+    global  tile, tilecol
     height = Tile.TILE_SIZE * 2
-    tile = Tile(100, 100)
-    tile1 = Tile(100 + math.sqrt(3)/2 * height  , 100)
-    tile2 = Tile(100 + math.sqrt(3)/4 * height, 100 + height * 3/4)
+    for i in range(0, 20):
+        tilecol[i] = Tile(i * 100, 0)
+    # tile = Tile(100, 100)
+    # tile1 = Tile(100 + math.sqrt(3)/2 * height  , 100)
+    # tile2 = Tile(100 + math.sqrt(3)/4 * height, 100 + height * 3/4)
 
 def exit():
     pass
@@ -57,9 +62,8 @@ def update():
 def draw():
 
     clear_canvas()
-    tile.draw()
-    tile1.draw()
-    tile2.draw()
+    for tile in tilecol:
+        tile.draw()
 
     update_canvas()
 
