@@ -26,12 +26,22 @@ class Map:
         font.draw(645,135,"HanGleT^T")
 
 class Beacon(ClickableImage):
+    TIME_PER_ACTION = 0.5
+    ACTION_PER_TIME = 1.0/TIME_PER_ACTION
+    FRAMES_PER_ACTION = 8
+    WIDTH_BTN_TO_BEACON = 60
+
     def __init__(self, x, y, name, where):
         self.focus = 0
         self.x = x
         self.y = y
+        self.frame = 0
         self.nameOfBeacon = name
         self.where = where
+        self.image_beacon = load_image('page\\beacon_sheet.png')
+        self.image_bluebtn = load_image('page\\beacon_btn_blue_sheet.png')
+        self.image_redbtn = load_image('page\\beacon_btn_red_sheet.png')
+        self.image_greenbtn = load_image('page\\beacon_btn_green_sheet.png')
         self.image_red = load_image('page\\beacon_red.png')
         self.image_blue = load_image('page\\beacon_blue.png')
         self.x_start = self.x - self.image_red.w/2
@@ -42,6 +52,9 @@ class Beacon(ClickableImage):
     def draw(self):
         global font
         self.image_red.draw(self.x, self.y)
+        #focus되지 않으면 0~27높이의 그림을 focus되면 30~55높이의 그림을 출력
+        # self.image_beacon.clip_draw(0 + (self.focus * 30), 0, 127, 27 + (self.focus * 28), self.x, self.y)
+        # self.image_bluebtn.clip_draw(0, 0, 0, 0, self.x - Beacon.WIDTH_BTN_TO_BEACON, self.y)
         font.draw(self.x - (4 * len(self.nameOfBeacon)), self.y, self.nameOfBeacon)
 
     def click_left(self):
@@ -53,6 +66,8 @@ class Beacon(ClickableImage):
             hero.x = self.x - 55
             hero.y = self.y + 30
 
+    def update(self, frame_time):
+        pass
 
 class Hero:
     def __init__(self):
@@ -64,15 +79,14 @@ class Hero:
 
     def update(self):
         self.frame = (self.frame + 1) % 4
-        # self.x += self.speed
-        if self.x > 700:
-            self.speed = -10
-        elif self.x < 100:
-            self.speed = 10
         delay(0.1)
 
     def draw(self):
         self.image.clip_draw(self.frame * 64, 80, 64, 80, self.x, self.y)
+
+    def move(self):
+        pass
+
 
 
 def enter():

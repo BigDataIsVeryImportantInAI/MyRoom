@@ -8,13 +8,16 @@ import math
 
 from sdl2 import *
 
-tile = []
+map = None
+tiles = []
 tilecol = []
+hero = None
 
-class Tile:
+class Tile(ClickableImage):
     TILE_SIZE = 40
 
     def __init__(self, x, y):
+        self.focus = 0
         self.tileCenter_x = x
         self.tileCenter_y = y
         self.vertexs = []   #헥사 타일의 모서리 xy좌표 6개
@@ -25,6 +28,35 @@ class Tile:
 
     def draw(self):
         draw_hexagon(self.vertexs)
+
+    def click_left(self):
+        pass
+
+class Map:
+    def __init__(self):
+        self.background = load_image('map\\stage1_background.PNG')
+
+    def draw(self):
+        self.background.draw(400,300)
+
+class Unit(ClickableImage):
+    MOVE_TO_CENTER_Y = 12
+    def __init__(self):
+        self.focus = 0
+        self.x = tiles[5][3].tileCenter_x
+        self.y = tiles[5][3].tileCenter_y
+        self.frame = 0
+        self.image = load_image('char\\race2\\worksheet.png')
+
+    def draw(self):
+        self.image.clip_draw(self.frame * 64, 80, 64, 80,self.x, self.y + Unit.MOVE_TO_CENTER_Y)
+
+    def update(self):
+        self.frame = (self.frame + 1) % 4
+        delay(0.1)
+
+    def click_left(self):
+        pass
 
 def hex_corner(x, y, size, i):
     angle_deg = 60 * i   + 30
@@ -39,32 +71,41 @@ def handle_events():
             game_framework.quit()
 
 def enter():
-    global  tile, tilecol
+    global  tiles, tilecol, hero, map
     height = Tile.TILE_SIZE * 2
-    for i in range(0, 20):
-        tilecol[i] = Tile(i * 100, 0)
-    # tile = Tile(100, 100)
-    # tile1 = Tile(100 + math.sqrt(3)/2 * height  , 100)
-    # tile2 = Tile(100 + math.sqrt(3)/4 * height, 100 + height * 3/4)
+    nexttile_width = math.sqrt(3)/2 * height
+    for j in range(0, 12):
+        if j % 2 == 0:
+            tilecol = [Tile(0 + (math.sqrt(3)/4 * height) + (i * nexttile_width), 0 + (j * height * 3/4)) for i in range(0, 12)]
+        else:
+            tilecol = [Tile(0 + (i * nexttile_width), 0 + (j * height * 3/4)) for i in range(0, 12)]
+        tiles.append(tilecol)
+    hero = Unit()
+    map = Map()
 
 def exit():
     pass
 
+
 def pause():
     pass
+
 
 def resume():
     pass
 
+
 def update():
-    pass
+    hero.update()
+
 
 def draw():
-
     clear_canvas()
-    for tile in tilecol:
-        tile.draw()
-
+    map.draw()
+    for tilecol in tiles:
+        for tile in tilecol:
+            tile.draw()
+    hero.draw()
     update_canvas()
 
 
