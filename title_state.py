@@ -1,9 +1,14 @@
 from pico2d import *
 import game_framework
 import worldmap
+from title_back import Background
 
 name = "TitleState"
 btn = None
+background = None
+menutitle = None
+menubtn = None
+bgm = None
 
 class MenuBtn:
     MOUSEON = None
@@ -45,18 +50,14 @@ class MenuBtn:
         else:
             self.handle_click[MenuBtn.MOUSEON](self)
 
-back = None
-menutitle = None
-menubtn = None
-bgm = None
 
 def enter():
     global btn
     btn = MenuBtn()
-    global back
+    global background
     global menutitle
     global menubtn
-    back = load_image('page\\back.png')
+    background = Background()
     menutitle = load_image('page\\menutitle.png')
     menubtn = load_image('page\\menubtn.png')
     global bgm
@@ -65,17 +66,17 @@ def enter():
 
 def exit():
     global btn
-    global back
+    global background
     global menutitle
     global menubtn
     global bgm
     del(btn)
-    del(back)
+    del(background)
     del(menutitle)
     del(menubtn)
     del(bgm)
 
-def handle_events():
+def handle_events(frame_time):
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -109,16 +110,16 @@ def handle_events():
                 game_framework.change_state(worldmap)
 
 
-def draw():
+def draw(frame_time):
     clear_canvas()
-    back.draw(400,300)
-    menutitle.draw_to_origin(0,599 - menutitle.h)
+    background.draw()
+    # menutitle.draw_to_origin(0,599 - menutitle.h)
     menubtn.draw_to_origin(399-menubtn.w/2,599-menutitle.h-menubtn.h)
     btn.draw()
     update_canvas()
     delay(0.01)
 
-def update():
+def update(frame_time):
     pass
 
 def pause():

@@ -16,7 +16,7 @@ class LogoImage():
     def __init__(self):
         self.x = CANVAS_WIDTH/2
         self.y = CANVAS_HIGHT/2
-        self.image = load_image('page\\logopage.png')
+        self.image = load_image('page\\logo\\logopage.png')
 
     def draw(self):
         self.image.draw(self.x, self.y)
