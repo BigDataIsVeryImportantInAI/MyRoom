@@ -3,7 +3,7 @@ from abc import ABCMeta, abstractmethod
 from pico2d import *
 
 class ClickableImage:
-    __metaclass__ = ABCMeta #추상 클래스로 선언
+    # __metaclass__ = ABCMeta #추상 클래스로 선언 #하지 않음
     def __init__(self):
         self.x
         self.y
@@ -18,7 +18,7 @@ class ClickableImage:
         pass
     def click_right(self):
         pass
-    def handle(self, event):
+    def handle(self, event, frame_time):
         # for event in events:
         if event.type == SDL_MOUSEMOTION:
             x, y = event.x, event.y

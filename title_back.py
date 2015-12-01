@@ -17,6 +17,7 @@ class Background:
         self.title_image.draw(self.canvas_width/2, self.title_image_y)
 
 
+
 def test_unit():
     open_canvas(1200, 800)
     clear_canvas()
