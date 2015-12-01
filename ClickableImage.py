@@ -12,7 +12,7 @@ class ClickableImage:
         self.y_start
         self.y_end
         self.focus = 0
-    def draw(self):
+    def draw(self, frame_time):
         pass
     def click_left(self):
         pass

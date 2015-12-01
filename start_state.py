@@ -9,15 +9,14 @@ name = "StartState"
 logo_time = 0.0
 logo_Image = None
 
-class LogoImage(ClickableImage):
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+CANVAS_WIDTH = 1200
+CANVAS_HIGHT = 800
+
+class LogoImage():
+    def __init__(self):
+        self.x = CANVAS_WIDTH/2
+        self.y = CANVAS_HIGHT/2
         self.image = load_image('page\\logopage.png')
-        self.x_start = self.x - self.image.w/2
-        self.y_start = 600 - self.y - self.image.h/2
-        self.x_end = self.x + self.image.w/2
-        self.y_end = 600 - self.y + self.image.h/2
 
     def draw(self):
         self.image.draw(self.x, self.y)
@@ -28,10 +27,10 @@ class LogoImage(ClickableImage):
 
 
 def enter():
-    open_canvas()
+    open_canvas(CANVAS_WIDTH, CANVAS_HIGHT)
     hide_lattice()
     global logo_Image
-    logo_Image = LogoImage(400,300)
+    logo_Image = LogoImage()
 
 
 def exit():
@@ -39,37 +38,35 @@ def exit():
     del(logo_Image)
     close_canvas()
 
-def update():
+def update(frame_time):
     global logo_time
 
+    logo_time += frame_time
     if(logo_time > 2):
         logo_time = 0
-        #game_framework.quit()
+        # game_framework.quit()
         game_framework.push_state(title_state)
-    delay(0.01)
-    logo_time += 0.01
+    print(logo_time)
 
-def draw():
+def draw(frame_time):
     global logo_Image
     clear_canvas()
     logo_Image.draw()
     update_canvas()
 
-
-
-
-def handle_events():
+def handle_events(frame_time):
     global logo_Image
     events = get_events()
     for event in events:
-        logo_Image.handle(event)
+        if event.type == SDL_KEYDOWN:
+            # game_framework.quit()
+            game_framework.push_state(title_state)
+        elif event.type == SDL_MOUSEBUTTONDOWN:
+            # game_framework.quit()
+            game_framework.push_state(title_state)
+
 
 
 def pause(): pass
 
-
 def resume(): pass
-
-
-
-
