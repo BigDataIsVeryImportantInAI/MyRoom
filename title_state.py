@@ -60,8 +60,8 @@ def enter():
     menutitle = load_image('page\\menutitle.png')
     menubtn = load_image('page\\menubtn.png')
     global bgm
-    bgm = load_music('page\\menupage.wav')
-    bgm.play(-1)
+    bgm = load_wav("page\\testwav.wav")
+    bgm.repeat_play()
 
 def exit():
     global btn
