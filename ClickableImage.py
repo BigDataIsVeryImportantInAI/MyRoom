@@ -18,10 +18,11 @@ class ClickableImage:
         pass
     def click_right(self):
         pass
-    def handle(self, event, frame_time):
+    def handle(self, event, frame_time=0):
         # for event in events:
         if event.type == SDL_MOUSEMOTION:
             x, y = event.x, event.y
+            # 마우스가 이미지 안에 들어있나 검사하기 위한 코드
             if self.x_start < x and x <self.x_end and self.y_start < y and y < self.y_end:
                 self.focus = 1
                 # print(self.nameOfBeacon + ' : focus %d',self.focus)

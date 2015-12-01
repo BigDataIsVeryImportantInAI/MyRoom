@@ -46,7 +46,6 @@ def update(frame_time):
         logo_time = 0
         # game_framework.quit()
         game_framework.push_state(title_state)
-    print(logo_time)
 
 def draw(frame_time):
     global logo_Image

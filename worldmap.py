@@ -113,10 +113,10 @@ def pause():
 def resume():
     pass
 
-def update():
+def update(frame_time):
     hero.update()
 
-def draw():
+def draw(frame_time):
     clear_canvas()
     map.draw()
     battle0.draw()
@@ -128,7 +128,7 @@ def draw():
     delay(0.02)
 
 
-def handle_events():
+def handle_events(frame_time):
     global running
     global battle0, battle1, battle2, battle3
     events = get_events()
