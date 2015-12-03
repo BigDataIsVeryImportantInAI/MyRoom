@@ -8,15 +8,12 @@ class CommunicationWindow:
         self.cwin_faceImage = load_image("page\\commun\\cwin_face.png")
         self.cwinImage = load_image("page\\commun\\cwin.png")
 
-
-    def draw(self):
-        self.faceImage.draw(400,300)
-
     def draw_window_withface(self):
-        pass
+        self.cwin_faceImage.draw(400,300)
+        self.faceImage.draw(210,300)
 
     def draw_window(self):
-        pass
+        self.cwinImage.draw(400,300)
 
 
 
@@ -25,7 +22,7 @@ def test_unit():
     clear_canvas()
 
     cWindow = CommunicationWindow()
-    cWindow.draw()
+    cWindow.draw_window()
 
     update_canvas()
     delay(1)
