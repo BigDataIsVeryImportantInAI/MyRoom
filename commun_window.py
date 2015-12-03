@@ -7,13 +7,16 @@ class CommunicationWindow:
         self.faceImage = load_image("face\\face002.png")
         self.cwin_faceImage = load_image("page\\commun\\cwin_face.png")
         self.cwinImage = load_image("page\\commun\\cwin.png")
+        self.font = load_font("font\\ConsolaMalgun.ttf")
 
     def draw_window_withface(self):
         self.cwin_faceImage.draw(400,300)
         self.faceImage.draw(210,300)
+        self.font.draw(400,300,"잘부탁드려요")
 
     def draw_window(self):
         self.cwinImage.draw(400,300)
+        self.font.draw(400,300,"승리 조건 : 상대방 전멸")
 
 
 
@@ -22,7 +25,7 @@ def test_unit():
     clear_canvas()
 
     cWindow = CommunicationWindow()
-    cWindow.draw_window()
+    cWindow.draw_window_withface()
 
     update_canvas()
     delay(1)
