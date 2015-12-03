@@ -3,11 +3,20 @@ from pico2d import *
 
 class CommunicationWindow:
     def __init__(self):
-        self.image = load_image("face\\face002.png")
+        self.canvas_width, self.canvas_heigth = get_canvas_width(), get_canvas_height()
+        self.faceImage = load_image("face\\face002.png")
+        self.cwin_faceImage = load_image("page\\commun\\cwin_face.png")
+        self.cwinImage = load_image("page\\commun\\cwin.png")
 
 
     def draw(self):
-        self.image.draw(400,300)
+        self.faceImage.draw(400,300)
+
+    def draw_window_withface(self):
+        pass
+
+    def draw_window(self):
+        pass
 
 
 
