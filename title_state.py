@@ -1,6 +1,7 @@
 from pico2d import *
 import game_framework
 import worldmap
+import worldmap_state
 from title_back import Background
 from title_btn import ButtonNew, ButtonLoad, ButtonOpening, ButtonQuit
 
@@ -71,7 +72,7 @@ def resume():
 
 def stateChangeCheck():
     if btnNew.stateChange == True:
-        game_framework.change_state(worldmap)
+        game_framework.change_state(worldmap_state)
     elif btnLoad.stateChange == True:
         print("btnLoad clicked")
     elif btnOpen.stateChange == True:

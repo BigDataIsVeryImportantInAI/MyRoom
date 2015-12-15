@@ -14,13 +14,14 @@ class Background:
 
 
 class Geography_Btn(ClickableImage):
-    relative_position_x = 40
-    relative_position_y = 1
-    def __init__(self):
-        self.x = 645
-        self.y = 135
+    relative_str_position_x = 40
+    relative_str_position_y = 1
+    def __init__(self, x, y, name="noname"):
+        self.x = x
+        self.y = y
         self.win_heigth = get_canvas_height()
         self.focus = 0
+        self.name = name
         self.mouseon_image = load_image("page\\world_geo\\btn_geo_on.png")
         self.mouseoff_image = load_image("page\\world_geo\\btn_geo.png")
         self.x_start = self.x - self.mouseon_image.w/2
@@ -28,7 +29,6 @@ class Geography_Btn(ClickableImage):
         self.x_end = self.x + self.mouseon_image.w/2
         self.y_end = self.win_heigth - self.y + self.mouseon_image.h/2
         self.font = load_font("font\\ConsolaMalgun.ttf", 12)
-        self.name = "아루바 만"
 
     def draw(self):
         if self.focus:
@@ -36,7 +36,7 @@ class Geography_Btn(ClickableImage):
         else:
             self.mouseoff_image.draw(self.x, self.y)
         self.font.draw(
-            self.x - Geography_Btn.relative_position_x, self.y - Geography_Btn.relative_position_y, self.name)
+            self.x - Geography_Btn.relative_str_position_x, self.y - Geography_Btn.relative_str_position_y, self.name)
 
     def click_left(self):
         pass
@@ -48,7 +48,7 @@ def test_unit():
 
     global  world_background, geo_btn
     world_background = Background()
-    geo_btn = Geography_Btn()
+    geo_btn = Geography_Btn(635, 135, "아루바 만")
     while(running):
         world_background.draw()
         geo_btn.draw()
