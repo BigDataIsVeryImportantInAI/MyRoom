@@ -42,7 +42,7 @@ def update(frame_time):
     global logo_time
 
     logo_time += frame_time
-    if(logo_time > 2):
+    if(logo_time > 200):
         logo_time = 0
         # game_framework.quit()
         game_framework.push_state(title_state)

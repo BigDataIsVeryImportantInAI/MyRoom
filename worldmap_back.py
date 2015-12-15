@@ -39,7 +39,7 @@ class Geography_Btn(ClickableImage):
             self.x - Geography_Btn.relative_str_position_x, self.y - Geography_Btn.relative_str_position_y, self.name)
 
     def click_left(self):
-        pass
+        print(self.name + " clicked")
 
 def test_unit():
     running = True

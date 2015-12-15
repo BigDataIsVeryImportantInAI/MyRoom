@@ -44,7 +44,7 @@ class Beacon(ClickableImage):
         self.frame = int((Beacon.TIME_PER_ACTION * frame_time) % 4)
 
     def click_left(self):
-        pass
+        print(self.name + " clicked")
 
 
 

@@ -5,8 +5,8 @@ import time
 hero = None
 
 class Hero:
-    # 0.25초 마다 한 액션을 보여줄 생각
-    TIME_PER_ACTION = 4.0
+    # 0.2초 마다 한 액션을 보여줄 생각
+    TIME_PER_ACTION = 5.0
     def __init__(self):
         self.image = load_image('char\\race2\\worksheet.png')
         self.x, self.y = 508, 600-320
