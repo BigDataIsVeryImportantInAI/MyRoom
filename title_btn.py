@@ -9,8 +9,11 @@ btnNew = None
 btnLoad = None
 btnOpeng = None
 btnQuit = None
+# 버튼 바로 아래에다 다른 버튼을 집어넣기 위한 변수
+BTN_IMAGE_Y_SIZE = 48
 
 class ButtonNew(ClickableImage):
+    # 다른 버튼들의 이미지 초기화에도 같이 쓰임
     buttonNewX = 0
     buttonNewY = 0
     def __init__(self):
@@ -25,6 +28,7 @@ class ButtonNew(ClickableImage):
         self.y_end = 800 - self.y + self.mouseon_image.h/2
         ButtonNew.buttonNewX = self.x
         ButtonNew.buttonNewY = self.y
+        self.stateChange = False
 
     def draw(self):
         if self.focus:
@@ -34,12 +38,12 @@ class ButtonNew(ClickableImage):
 
     def click_left(self):
         print("Button New is clicked")
-        game_framework.change_state(worldmap)
+        self.stateChange = True
 
 class ButtonLoad(ClickableImage):
     def __init__(self):
         self.x = ButtonNew.buttonNewX
-        self.y = ButtonNew.buttonNewY - 48
+        self.y = ButtonNew.buttonNewY - BTN_IMAGE_Y_SIZE
         self.focus = 0
         self.mouseon_image = load_image("page\\title\\btn_load_on.png")
         self.mouseoff_image = load_image("page\\title\\btn_load.png")
@@ -47,6 +51,7 @@ class ButtonLoad(ClickableImage):
         self.y_start = 800 - self.y - self.mouseon_image.h/2
         self.x_end = self.x + self.mouseon_image.w/2
         self.y_end = 800 - self.y + self.mouseon_image.h/2
+        self.stateChange = False
 
     def draw(self):
         if self.focus:
@@ -56,11 +61,12 @@ class ButtonLoad(ClickableImage):
 
     def click_left(self):
         print("Button Load is clicked")
+        self.stateChange = True
 
 class ButtonOpening(ClickableImage):
     def __init__(self):
         self.x = ButtonNew.buttonNewX
-        self.y = ButtonNew.buttonNewY - (48*2)
+        self.y = ButtonNew.buttonNewY - (BTN_IMAGE_Y_SIZE*2)
         self.focus = 0
         self.mouseon_image = load_image("page\\title\\btn_opening_on.png")
         self.mouseoff_image = load_image("page\\title\\btn_opening.png")
@@ -68,6 +74,7 @@ class ButtonOpening(ClickableImage):
         self.y_start = 800 - self.y - self.mouseon_image.h/2
         self.x_end = self.x + self.mouseon_image.w/2
         self.y_end = 800 - self.y + self.mouseon_image.h/2
+        self.stateChange = False
 
     def draw(self):
         if self.focus:
@@ -77,11 +84,12 @@ class ButtonOpening(ClickableImage):
 
     def click_left(self):
         print("Button Opening is clicked")
+        self.stateChange = True
 
 class ButtonQuit(ClickableImage):
     def __init__(self):
         self.x = ButtonNew.buttonNewX
-        self.y = ButtonNew.buttonNewY - (48*3)
+        self.y = ButtonNew.buttonNewY - (BTN_IMAGE_Y_SIZE*3)
         self.focus = 0
         self.mouseon_image = load_image("page\\title\\btn_quit_on.png")
         self.mouseoff_image = load_image("page\\title\\btn_quit.png")
@@ -89,6 +97,7 @@ class ButtonQuit(ClickableImage):
         self.y_start = 800 - self.y - self.mouseon_image.h/2
         self.x_end = self.x + self.mouseon_image.w/2
         self.y_end = 800 - self.y + self.mouseon_image.h/2
+        self.stateChange = False
 
     def draw(self):
         if self.focus:
@@ -98,6 +107,7 @@ class ButtonQuit(ClickableImage):
 
     def click_left(self):
         print("Button Quit is clicked")
+        self.stateChange = True
 
 #테스트 하기 위해 click_left 함수를 pass로 바꿀것!
 def test_unit():

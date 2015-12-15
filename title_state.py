@@ -38,12 +38,9 @@ def handle_events(frame_time):
     events = get_events()
     for event in events:
         btnNew.handle(event)
-        # 요걸 어떻게야 하나...
-        # btnNew의 leftClick시 다른 스테이트로 체인지 되고 btnLoad들은 del되는것같음
-        # 그런데 그 다음에 btnLoad.handle()이 실행됨
-        # btnLoad.handle(event)
-        # btnOpen.handle(event)
-        # btnQuit.handle(event)
+        btnLoad.handle(event)
+        btnOpen.handle(event)
+        btnQuit.handle(event)
         print("title_state handle_events()")
         if event.type == SDL_QUIT:
             game_framework.quit()
@@ -65,7 +62,7 @@ def draw(frame_time):
     update_canvas()
 
 def update(frame_time):
-    pass
+    stateChangeCheck()
 
 def pause():
     pass
@@ -73,7 +70,15 @@ def pause():
 def resume():
     pass
 
-
+def stateChangeCheck():
+    if btnNew.stateChange == True:
+        game_framework.change_state(worldmap)
+    elif btnLoad.stateChange == True:
+        print("btnLoad clicked")
+    elif btnOpen.stateChange == True:
+        print("btnLoad clicked")
+    elif btnQuit.stateChange == True:
+        game_framework.quit()
 
 
 
