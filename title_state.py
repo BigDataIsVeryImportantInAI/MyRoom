@@ -21,7 +21,7 @@ def enter():
     btnOpen = ButtonOpening()
     btnQuit = ButtonQuit()
     global bgm
-    bgm = load_wav("page\\testwav.wav")
+    bgm = load_wav("page\\menupage.WAV")
     bgm.repeat_play()
 
 def exit():
@@ -41,7 +41,6 @@ def handle_events(frame_time):
         btnLoad.handle(event)
         btnOpen.handle(event)
         btnQuit.handle(event)
-        print("title_state handle_events()")
         if event.type == SDL_QUIT:
             game_framework.quit()
         else:
