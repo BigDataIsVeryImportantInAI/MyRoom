@@ -12,6 +12,7 @@ btnQuit = None
 # 버튼 바로 아래에다 다른 버튼을 집어넣기 위한 변수
 BTN_IMAGE_Y_SIZE = 48
 
+
 class ButtonNew(ClickableImage):
     # 다른 버튼들의 이미지 초기화에도 같이 쓰임
     buttonNewX = 0
@@ -19,13 +20,14 @@ class ButtonNew(ClickableImage):
     def __init__(self):
         self.x = get_canvas_width() / 2
         self.y = get_canvas_height() / 2
+        self.win_heigth = get_canvas_height()
         self.focus = 0
         self.mouseon_image = load_image("page\\title\\btn_new_on.png")
         self.mouseoff_image = load_image("page\\title\\btn_new.png")
         self.x_start = self.x - self.mouseon_image.w/2
-        self.y_start = 800 - self.y - self.mouseon_image.h/2
+        self.y_start = self.win_heigth - self.y - self.mouseon_image.h/2
         self.x_end = self.x + self.mouseon_image.w/2
-        self.y_end = 800 - self.y + self.mouseon_image.h/2
+        self.y_end = self.win_heigth - self.y + self.mouseon_image.h/2
         ButtonNew.buttonNewX = self.x
         ButtonNew.buttonNewY = self.y
         self.stateChange = False
@@ -44,13 +46,14 @@ class ButtonLoad(ClickableImage):
     def __init__(self):
         self.x = ButtonNew.buttonNewX
         self.y = ButtonNew.buttonNewY - BTN_IMAGE_Y_SIZE
+        self.win_heigth = get_canvas_height()
         self.focus = 0
         self.mouseon_image = load_image("page\\title\\btn_load_on.png")
         self.mouseoff_image = load_image("page\\title\\btn_load.png")
         self.x_start = self.x - self.mouseon_image.w/2
-        self.y_start = 800 - self.y - self.mouseon_image.h/2
+        self.y_start = self.win_heigth - self.y - self.mouseon_image.h/2
         self.x_end = self.x + self.mouseon_image.w/2
-        self.y_end = 800 - self.y + self.mouseon_image.h/2
+        self.y_end = self.win_heigth - self.y + self.mouseon_image.h/2
         self.stateChange = False
 
     def draw(self):
@@ -67,13 +70,14 @@ class ButtonOpening(ClickableImage):
     def __init__(self):
         self.x = ButtonNew.buttonNewX
         self.y = ButtonNew.buttonNewY - (BTN_IMAGE_Y_SIZE*2)
+        self.win_heigth = get_canvas_height()
         self.focus = 0
         self.mouseon_image = load_image("page\\title\\btn_opening_on.png")
         self.mouseoff_image = load_image("page\\title\\btn_opening.png")
         self.x_start = self.x - self.mouseon_image.w/2
-        self.y_start = 800 - self.y - self.mouseon_image.h/2
+        self.y_start = self.win_heigth - self.y - self.mouseon_image.h/2
         self.x_end = self.x + self.mouseon_image.w/2
-        self.y_end = 800 - self.y + self.mouseon_image.h/2
+        self.y_end = self.win_heigth - self.y + self.mouseon_image.h/2
         self.stateChange = False
 
     def draw(self):
@@ -90,13 +94,14 @@ class ButtonQuit(ClickableImage):
     def __init__(self):
         self.x = ButtonNew.buttonNewX
         self.y = ButtonNew.buttonNewY - (BTN_IMAGE_Y_SIZE*3)
+        self.win_heigth = get_canvas_height()
         self.focus = 0
         self.mouseon_image = load_image("page\\title\\btn_quit_on.png")
         self.mouseoff_image = load_image("page\\title\\btn_quit.png")
         self.x_start = self.x - self.mouseon_image.w/2
-        self.y_start = 800 - self.y - self.mouseon_image.h/2
+        self.y_start = self.win_heigth - self.y - self.mouseon_image.h/2
         self.x_end = self.x + self.mouseon_image.w/2
-        self.y_end = 800 - self.y + self.mouseon_image.h/2
+        self.y_end = self.win_heigth - self.y + self.mouseon_image.h/2
         self.stateChange = False
 
     def draw(self):
