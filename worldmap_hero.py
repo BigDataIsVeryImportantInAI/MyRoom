@@ -5,6 +5,8 @@ import time
 hero = None
 
 class Hero:
+    relative_btn_position_x = 53
+    relative_btn_position_y = 33
     # 0.2초 마다 한 액션을 보여줄 생각
     TIME_PER_ACTION = 5.0
     def __init__(self):
@@ -20,8 +22,9 @@ class Hero:
     def draw(self):
         self.image.clip_draw(self.frame * 64, 80, 64, 80, self.x, self.y)
 
-    def move(self):
-        pass
+    def move(self, bcn):
+        self.x = bcn.x - Hero.relative_btn_position_x
+        self.y = bcn.y + Hero.relative_btn_position_y
 
 
 

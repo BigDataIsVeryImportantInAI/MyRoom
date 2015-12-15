@@ -19,6 +19,7 @@ class Beacon(ClickableImage):
         self.frame = 0
         self.name = name
         self.where = where
+        self.clicked = False
         self.font = load_font("font\\ConsolaMalgun.ttf", 12)
         # self.frame
         self.mouseon_image = load_image("page\\world_beacon\\btn_bcn_on.png")
@@ -45,6 +46,7 @@ class Beacon(ClickableImage):
 
     def click_left(self):
         print(self.name + " clicked")
+        self.clicked = True
 
 
 

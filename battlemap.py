@@ -64,7 +64,7 @@ def hex_corner(x, y, size, i):
     # SDL_Render.
     return SDL_Point(int(x + size * math.cos(angle_rad)), int(y + size * math.sin(angle_rad)))
 
-def handle_events():
+def handle_events(frame_time):
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -95,11 +95,11 @@ def resume():
     pass
 
 
-def update():
+def update(frame_time):
     hero.update()
 
 
-def draw():
+def draw(frame_time):
     clear_canvas()
     map.draw()
     for tilecol in tiles:

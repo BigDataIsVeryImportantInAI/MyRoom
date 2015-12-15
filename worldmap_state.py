@@ -15,15 +15,21 @@ map = None
 geo_btn = None
 bcn0, bcn1, bcn2, bcn3 = None, None, None, None
 hero = None
+bcns = []
 
 def enter():
-    global map, geo_btn, bcn0, bcn1, bcn2, bcn3, hero
+    global map, geo_btn, bcn0, bcn1, bcn2, bcn3, hero, bcns
     map = Background()
     geo_btn = Geography_Btn(635, 135, "아루바 만")
     bcn0 = Beacon(563, 600-350, "Aruva Caves", 0)
     bcn1 = Beacon(432, 600-513, "Wetlands", 1)
     bcn2 = Beacon(488, 600-221, "Sanctuary", 2)
     bcn3 = Beacon(240, 600-294, "Forest", 3)
+    bcns.append(bcn0)
+    bcns.append(bcn1)
+    bcns.append(bcn2)
+    bcns.append(bcn3)
+    print(bcns)
     hero = Hero()
 
 
@@ -67,6 +73,13 @@ def handle_events(frame_time):
         bcn1.handle(event)
         bcn2.handle(event)
         bcn3.handle(event)
+        if event.type == SDL_MOUSEBUTTONDOWN:
+            if event.button == SDL_BUTTON_LEFT:
+                for bcn in bcns:
+                    if bcn.clicked:
+                        moveHero(bcn)
+            elif event.button == SDL_BUTTON_RIGHT:
+                pass
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
@@ -74,6 +87,9 @@ def handle_events(frame_time):
         elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
             game_framework.change_state(battlemap)
 
+def moveHero(bcn):
+    hero.move(bcn)
+    bcn.clicked = False
 
 def stateChangeCheck():
     pass
