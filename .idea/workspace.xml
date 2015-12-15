@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a1619d6-10a1-43ae-badd-c5e99bd37986" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/title_btn.py" afterPath="$PROJECT_DIR$/title_btn.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/worldmap_back.py" afterPath="$PROJECT_DIR$/worldmap_back.py" />
     </list>
     <ignored path="project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="title_btn.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="title_btn.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/title_btn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8769841">
-              <caret line="122" column="24" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="100" column="23" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
               <folding>
                 <element signature="e#22#42#0" expanded="true" />
               </folding>
@@ -113,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="worldmap_back.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="worldmap_back.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/worldmap_back.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.4722222">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="e#21#41#0" expanded="true" />
               </folding>
@@ -153,9 +153,9 @@
         <option value="$PROJECT_DIR$/comu_window.py" />
         <option value="$PROJECT_DIR$/commun_window.py" />
         <option value="$PROJECT_DIR$/title_state.py" />
-        <option value="$PROJECT_DIR$/worldmap_back.py" />
         <option value="$PROJECT_DIR$/ClickableImage.py" />
         <option value="$PROJECT_DIR$/title_btn.py" />
+        <option value="$PROJECT_DIR$/worldmap_back.py" />
       </list>
     </option>
   </component>
@@ -230,7 +230,7 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager" selected="Python.title_btn">
+  <component name="RunManager" selected="Python.worldmap_back">
     <configuration default="false" name="commun_window" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -447,9 +447,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.title_btn" />
-        <item index="1" class="java.lang.String" itemvalue="Python.sprityoursoul" />
-        <item index="2" class="java.lang.String" itemvalue="Python.worldmap_back" />
+        <item index="0" class="java.lang.String" itemvalue="Python.worldmap_back" />
+        <item index="1" class="java.lang.String" itemvalue="Python.title_btn" />
+        <item index="2" class="java.lang.String" itemvalue="Python.sprityoursoul" />
         <item index="3" class="java.lang.String" itemvalue="Python.mygame" />
         <item index="4" class="java.lang.String" itemvalue="Python.commun_window" />
       </list>
@@ -844,16 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/worldmap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="84" column="67" selection-start-line="84" selection-start-column="67" selection-end-line="84" selection-end-column="67" />
-          <folding>
-            <element signature="e#22#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -867,16 +857,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/worldmap_back.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-          <folding>
-            <element signature="e#21#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -908,12 +888,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/worldmap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="67" selection-start-line="84" selection-start-column="67" selection-end-line="84" selection-end-column="67" />
+          <folding>
+            <element signature="e#22#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/title_btn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8769841">
-          <caret line="122" column="24" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="100" column="23" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
           <folding>
             <element signature="e#22#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/worldmap_back.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4722222">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#21#41#0" expanded="true" />
           </folding>
         </state>
       </provider>

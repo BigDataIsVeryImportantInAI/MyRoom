@@ -19,10 +19,14 @@ class Geography_Btn(ClickableImage):
         self.y = 300
         self.focus = 0
         self.image_geo = load_image("page\\geographic_sheet.png")
-        self.x_start = self.x - self.image_geo.w/2
-        self.y_start = 800 - self.y - self.image_geo.h/2
-        self.x_end = self.x + self.image_geo.w/2
-        self.y_end = 800 - self.y + self.image_geo.h/2
+        self.x_start = 1000
+        self.y_start = 1000
+        self.x_end = 0
+        self.y_end = 0
+        # self.x_start = self.x - self.image_geo.w/2
+        # self.y_start = 800 - self.y - self.image_geo.h/2
+        # self.x_end = self.x + self.image_geo.w/2
+        # self.y_end = 800 - self.y + self.image_geo.h/2
 
     def draw(self):
         if self.focus:
@@ -31,6 +35,8 @@ class Geography_Btn(ClickableImage):
             self.image_geo.clip_draw(0, 30, 127, 25, self.x, self.y)
         print(self.focus)
 
+    def click_left(self):
+        print("Geography_Btn is clicked")
 
 
 
