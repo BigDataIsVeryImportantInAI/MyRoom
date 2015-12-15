@@ -79,11 +79,11 @@ manifest_template = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 
 
-mygame = Target(
+SpritualSoul = Target(
     script = "SpritualSoul.py",
     dset_base = "SpritualSoul",
-    icon_resources = [(1, r"pico2d.ico")],
-    other_resources = [(RT_MANIFEST, 1, (manifest_template % dict(prog="mygame", level="asInvoker")).encode("utf-8"))]
+    icon_resources = [(1, r"spritualsoul.ico")],
+    other_resources = [(RT_MANIFEST, 1, (manifest_template % dict(prog="SpritualSoul", level="asInvoker")).encode("utf-8"))]
     )
 
 py2exe_options = dict(
@@ -94,8 +94,12 @@ py2exe_options = dict(
     dist_dir='dist',
     )
 
-resources = os.listdir("char\\race2")
 # resources = "char\\*" "font\\*" "map\\*" "page\\*".split()
+# char = ["char\\" + i for i in os.listdir("char")]
+# face = ["face\\" + i for i in os.listdir("face")]
+# font = ["font\\" + i for i in os.listdir("font")]
+# map = ["map\\" + i for i in os.listdir("map")]
+# page = ["page\\" + i for i in os.listdir("page")]
 
 if platform.architecture()[0] == '32bit':
     sdl_folder = './SDL2/x86/'
@@ -106,8 +110,8 @@ sdl_dlls = [sdl_folder + file_name for file_name in os.listdir(sdl_folder)]
 
 
 setup(name="name",
-      windows=[mygame],
-      data_files=[('.', resources), (sdl_folder, sdl_dlls)], # copy resource to '.' folder
+      windows=[SpritualSoul],
+      data_files=[(sdl_folder, sdl_dlls)], # copy resource to '.' folder
       zipfile=None,
       options={"py2exe": py2exe_options},
       )
