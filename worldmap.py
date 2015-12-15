@@ -5,10 +5,12 @@ from pico2d import *
 import game_framework
 import title_state
 import battlemap
+from worldmap_back import Background, Geography_Btn
 
 name = "WorldMapState"
 
 map = None
+geo_btn = None
 battle0, battle1, battle2, battle3 = None, None, None, None
 hero = None
 font = None
@@ -79,7 +81,6 @@ class Hero:
 
     def update(self):
         self.frame = (self.frame + 1) % 4
-        delay(0.1)
 
     def draw(self):
         self.image.clip_draw(self.frame * 64, 80, 64, 80, self.x, self.y)
@@ -92,8 +93,9 @@ class Hero:
 def enter():
     global font
     font = load_font('font\\HANYGO230.ttf', 14)
-    global map, battle0, battle1, battle2, battle3, hero
-    map = Map()
+    global map, geo_btn, battle0, battle1, battle2, battle3, hero
+    map = Background()
+    geo_btn = Geography_Btn()
     battle0 = Beacon(563, 600-350, "Aruva Caves", 0)
     battle1 = Beacon(432, 600-513, "Wetlands", -1)
     battle2 = Beacon(488, 600-221, "Sanctuary", 1)
@@ -102,7 +104,7 @@ def enter():
 
 
 def exit():
-    global map, battle0, battle1, battle2, battle3, hero
+    global map, geo_btn, battle0, battle1, battle2, battle3, hero
     # battle클래스의 핸들이벤트가 del후에도 콜되서 멈춤
     # del(map, battle0, battle1, battle2, battle3)
     del(hero)
@@ -119,13 +121,13 @@ def update(frame_time):
 def draw(frame_time):
     clear_canvas()
     map.draw()
+    geo_btn.draw()
     battle0.draw()
     battle1.draw()
     battle2.draw()
     battle3.draw()
     hero.draw()
     update_canvas()
-    delay(0.02)
 
 
 def handle_events(frame_time):
@@ -133,6 +135,7 @@ def handle_events(frame_time):
     global battle0, battle1, battle2, battle3
     events = get_events()
     for event in events:
+        geo_btn.handle(event)
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:

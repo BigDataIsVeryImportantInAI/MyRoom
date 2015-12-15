@@ -14,33 +14,32 @@ class Background:
 
 
 class Geography_Btn(ClickableImage):
+    relative_position_x = 40
+    relative_position_y = 1
     def __init__(self):
-        self.x = 400
-        self.y = 300
+        self.x = 645
+        self.y = 135
+        self.win_heigth = get_canvas_height()
         self.focus = 0
-        self.image_geo = load_image("page\\geographic_sheet.png")
-        self.x_start = 1000
-        self.y_start = 1000
-        self.x_end = 0
-        self.y_end = 0
-        # self.x_start = self.x - self.image_geo.w/2
-        # self.y_start = 800 - self.y - self.image_geo.h/2
-        # self.x_end = self.x + self.image_geo.w/2
-        # self.y_end = 800 - self.y + self.image_geo.h/2
+        self.mouseon_image = load_image("page\\world_geo\\btn_geo_on.png")
+        self.mouseoff_image = load_image("page\\world_geo\\btn_geo.png")
+        self.x_start = self.x - self.mouseon_image.w/2
+        self.y_start = self.win_heigth - self.y - self.mouseon_image.h/2
+        self.x_end = self.x + self.mouseon_image.w/2
+        self.y_end = self.win_heigth - self.y + self.mouseon_image.h/2
+        self.font = load_font("font\\ConsolaMalgun.ttf", 12)
+        self.name = "아루바 만"
 
     def draw(self):
         if self.focus:
-            self.image_geo.clip_draw(0, 0, 127, 27, self.x, self.y)
+            self.mouseon_image.draw(self.x, self.y)
         else:
-            self.image_geo.clip_draw(0, 30, 127, 25, self.x, self.y)
-        print(self.focus)
+            self.mouseoff_image.draw(self.x, self.y)
+        self.font.draw(
+            self.x - Geography_Btn.relative_position_x, self.y - Geography_Btn.relative_position_y, self.name)
 
     def click_left(self):
-        print("Geography_Btn is clicked")
-
-
-
-
+        pass
 
 def test_unit():
     running = True
@@ -49,9 +48,9 @@ def test_unit():
 
     global  world_background, geo_btn
     world_background = Background()
-    world_background.draw()
+    geo_btn = Geography_Btn()
     while(running):
-        geo_btn = Geography_Btn()
+        world_background.draw()
         geo_btn.draw()
 
         update_canvas()
